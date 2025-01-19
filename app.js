@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import connection from './db/connection.js'
-import staticRouter from './routes/fileRoutes.js'
+import fileRouter from './routes/fileRoutes.js'
 import logicRouter from './routes/logicRoutes.js'
 
 dotenv.config();
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use('/', staticRouter);
+app.use('/', fileRouter);
 app.use('/auth', logicRouter);
 
 const port = process.env.PORT || 3000;
