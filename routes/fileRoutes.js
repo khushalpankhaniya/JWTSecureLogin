@@ -10,9 +10,9 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-//token required for acccess page
-router.get('/home', authenticate, (req, res) => {
-    res.render('home');
+// exmple page (token required for acccess page)
+router.get('/profile', authenticate, (req, res) => {
+
 });
 
 export default router;

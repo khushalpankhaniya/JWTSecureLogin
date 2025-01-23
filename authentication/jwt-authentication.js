@@ -12,17 +12,17 @@ const authenticate = (req, res, next) => {
         const token = req.header('Authorization')?.split(' ')[1];
 
         if (!token) {
-            return res.status(401).json({ message: 'Access denied. No token provided.' });
+            return res.status(401).json({ success : false , message: 'Access denied. No token provided.' });
         }
 
         // Verify the token
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
 
-        req.user = decoded;
+        req.userData = decoded;
         next(); 
     } catch (error) {
         console.log(error);
-        res.status(400).json({ message: 'Invalid token.' });
+        res.status(400).json({success : false , message: 'Invalid token.' });
     }
 };
 
